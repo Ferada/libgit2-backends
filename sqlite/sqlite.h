@@ -27,7 +27,15 @@
 #define LIBGIT2_BACKENDS_SQLITE_H
 
 #include <git2.h>
+#include <sqlite3.h>
+
+#define GIT2_ODB_TABLE_NAME "git2_odb"
+#define GIT2_REFDB_TABLE_NAME "git2_refdb"
 
 int git_odb_backend_sqlite(git_odb_backend **backend_out, const char *sqlite_db);
+int git_odb_backend_sqlite_with_database(git_odb_backend **backend_out, sqlite3 *db);
+
+int git_refdb_backend_sqlite(git_refdb_backend **backend_out, const char *sqlite_db);
+int git_refdb_backend_sqlite_with_database(git_refdb_backend **backend_out, sqlite3 *db);
 
 #endif
